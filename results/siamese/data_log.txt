@@ -1,0 +1,3 @@
+train: 120 identities -> 1440 pairs (720 genuine, 720 forged)
+val: 40 identities -> 480 pairs (240 genuine, 240 forged)
+test: 40 identities -> 480 pairs (240 genuine, 240 forged)

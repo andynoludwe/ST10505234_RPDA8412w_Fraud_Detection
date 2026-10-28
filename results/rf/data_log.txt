@@ -1,0 +1,2 @@
+Wrote 1800 rows to <repo>/data_manifests/rf/manifest.csv (800 genuine, 1000 forged).
+Split 1800 rows -> train=1080, val=360, test=360

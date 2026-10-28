@@ -1,0 +1,72 @@
+{
+  "forgery": {
+    "precision": 0.75,
+    "recall": 1.0,
+    "f1": 0.8571428571428571,
+    "confusion_matrix": [
+      [
+        0,
+        160
+      ],
+      [
+        0,
+        480
+      ]
+    ],
+    "roc_auc": 0.5025130208333334,
+    "pr_auc": 0.7478822740113527
+  },
+  "tamper_types": {
+    "splicing": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "confusion_matrix": [
+        [
+          480,
+          0
+        ],
+        [
+          160,
+          0
+        ]
+      ],
+      "roc_auc": 0.474921875,
+      "pr_auc": 0.23781574403430775
+    },
+    "copy_move": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "confusion_matrix": [
+        [
+          480,
+          0
+        ],
+        [
+          160,
+          0
+        ]
+      ],
+      "roc_auc": 0.5334635416666667,
+      "pr_auc": 0.2906284194133387
+    },
+    "inpainting": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "confusion_matrix": [
+        [
+          480,
+          0
+        ],
+        [
+          160,
+          0
+        ]
+      ],
+      "roc_auc": 0.48158854166666665,
+      "pr_auc": 0.23931591740799546
+    }
+  }
+}

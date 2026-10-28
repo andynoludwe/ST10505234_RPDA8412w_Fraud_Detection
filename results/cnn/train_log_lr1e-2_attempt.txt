@@ -1,0 +1,109 @@
+==============================================================================
+STEP: cnn
+==============================================================================
+$ /usr/local/bin/python3 -I -c import sys; sys.path.insert(0, '.')
+from data.synthetic_tamper import generate_split_datasets
+generate_split_datasets(genuine_dir=r'<repo>/outputs/genuine_documents', output_dir=r'<repo>/outputs/cnn_data',
+                        manifest_dir=r'<repo>/data_manifests/cnn', data_root=r'<repo>', fracs=(0.5, 0.1, 0.4), seed=42)
+train: 200 source documents -> 800 images (200 genuine, 600 forged)
+val: 40 source documents -> 160 images (40 genuine, 120 forged)
+test: 160 source documents -> 640 images (160 genuine, 480 forged)
+[100s]
+$ /usr/local/bin/python3 -I <repo>/document_cnn_branch/scripts/train.py --train_manifest <repo>/data_manifests/cnn/train.csv --val_manifest <repo>/data_manifests/cnn/val.csv --data_root <repo> --backbone efficientnet_b0 ...
+Using device: cpu
+Class balance: {'genuine': 200, 'forged': 600}  ->  forgery pos_weight=0.33
+>>> Unfreezing backbone for fine-tuning
+Epoch 1/15
+  train_loss=0.6658  train_f1=0.6169
+  val_loss=0.6300    --- val ---
+     precision: 0.7500
+        recall: 1.0000
+            f1: 0.8571
+       roc_auc: 0.5092
+        pr_auc: 0.7644
+    confusion_matrix (rows=true, cols=pred): [[0, 40], [0, 120]]
+  -> saved new best checkpoint (<repo>/outputs/checkpoints/cnn/best_efficientnet_b0.pt), val_auc=0.5092
+Epoch 2/15
+  train_loss=0.6434  train_f1=0.6138
+  val_loss=0.6283    --- val ---
+     precision: 0.0000
+        recall: 0.0000
+            f1: 0.0000
+       roc_auc: 0.5063
+        pr_auc: 0.7675
+    confusion_matrix (rows=true, cols=pred): [[40, 0], [120, 0]]
+Epoch 3/15
+  train_loss=0.6513  train_f1=0.7296
+  val_loss=1.8847    --- val ---
+     precision: 0.7500
+        recall: 0.5250
+            f1: 0.6176
+       roc_auc: 0.4892
+        pr_auc: 0.7611
+    confusion_matrix (rows=true, cols=pred): [[19, 21], [57, 63]]
+Epoch 4/15
+  train_loss=0.6395  train_f1=0.4578
+  val_loss=0.6291    --- val ---
+     precision: 0.7516
+        recall: 0.9833
+            f1: 0.8520
+       roc_auc: 0.5150
+        pr_auc: 0.7641
+    confusion_matrix (rows=true, cols=pred): [[1, 39], [2, 118]]
+  -> saved new best checkpoint (<repo>/outputs/checkpoints/cnn/best_efficientnet_b0.pt), val_auc=0.5150
+Epoch 5/15
+  train_loss=0.6443  train_f1=0.6522
+  val_loss=0.6337    --- val ---
+     precision: 0.7541
+        recall: 0.3833
+            f1: 0.5083
+       roc_auc: 0.4856
+        pr_auc: 0.7421
+    confusion_matrix (rows=true, cols=pred): [[25, 15], [74, 46]]
+Epoch 6/15
+  train_loss=0.6483  train_f1=0.6960
+  val_loss=0.6281    --- val ---
+     precision: 1.0000
+        recall: 0.0083
+            f1: 0.0165
+       roc_auc: 0.5209
+        pr_auc: 0.7669
+    confusion_matrix (rows=true, cols=pred): [[40, 0], [119, 1]]
+  -> saved new best checkpoint (<repo>/outputs/checkpoints/cnn/best_efficientnet_b0.pt), val_auc=0.5209
+Epoch 7/15
+  train_loss=0.6441  train_f1=0.2834
+  val_loss=0.6285    --- val ---
+     precision: 0.7529
+        recall: 0.5333
+            f1: 0.6244
+       roc_auc: 0.4823
+        pr_auc: 0.7388
+    confusion_matrix (rows=true, cols=pred): [[19, 21], [56, 64]]
+Epoch 8/15
+  train_loss=0.6398  train_f1=0.6587
+  val_loss=0.7098    --- val ---
+     precision: 0.6667
+        recall: 0.0167
+            f1: 0.0325
+       roc_auc: 0.4992
+        pr_auc: 0.7581
+    confusion_matrix (rows=true, cols=pred): [[39, 1], [118, 2]]
+Epoch 9/15
+  train_loss=0.6452  train_f1=0.6819
+  val_loss=0.6307    --- val ---
+     precision: 0.0000
+        recall: 0.0000
+            f1: 0.0000
+       roc_auc: 0.5073
+        pr_auc: 0.7646
+    confusion_matrix (rows=true, cols=pred): [[40, 0], [120, 0]]
+Epoch 10/15
+  train_loss=0.6375  train_f1=0.7481
+  val_loss=0.6278    --- val ---
+     precision: 1.0000
+        recall: 0.0167
+            f1: 0.0328
+       roc_auc: 0.5332
+        pr_auc: 0.7789
+    confusion_matrix (rows=true, cols=pred): [[40, 0], [118, 2]]
+  -> saved new best checkpoint (<repo>/outputs/checkpoints/cnn/best_efficientnet_b0.pt), val_auc=0.5332

@@ -1,0 +1,36 @@
+{
+  "forgery": {
+    "precision": 0.945,
+    "recall": 0.7875,
+    "f1": 0.8590909090909091,
+    "confusion_matrix": [
+      [
+        229,
+        11
+      ],
+      [
+        51,
+        189
+      ]
+    ],
+    "roc_auc": 0.9274826388888889,
+    "pr_auc": 0.9486347541099169
+  },
+  "by_pair_type": {
+    "genuine": {
+      "n": 240,
+      "mean_forgery_prob": 0.20654729008674622,
+      "flagged_rate@0.5": 0.04583333333333333
+    },
+    "random_forgery": {
+      "n": 97,
+      "mean_forgery_prob": 0.9538189768791199,
+      "flagged_rate@0.5": 0.979381443298969
+    },
+    "skilled_forgery": {
+      "n": 143,
+      "mean_forgery_prob": 0.7230448722839355,
+      "flagged_rate@0.5": 0.6573426573426573
+    }
+  }
+}

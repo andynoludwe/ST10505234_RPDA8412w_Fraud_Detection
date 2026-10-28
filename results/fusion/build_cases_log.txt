@@ -1,0 +1,10 @@
+CNN: 160 genuine, 480 forged held-out items  (id='doc_id', label='y_true', prob='forgery_prob')
+RF: 160 genuine, 200 forged held-out items  (id='doc_id', label='label', prob='forgery_prob')
+Siamese: 240 genuine, 240 forged held-out items  (id='pair_id', label='y_true', prob='forgery_prob')
+
+Building 241 matched cases: {'genuine': 120, 'doc_forged': 40, 'sig_forged': 40, 'both_forged': 41}
+train: 144 cases (72 fraudulent)
+val: 48 cases (24 fraudulent)
+test: 49 cases (25 fraudulent)
+
+Wrote files to <repo>/data_manifests/fusion/. Train the fusion model with scripts/train.py using fusion_train.csv / fusion_val.csv.

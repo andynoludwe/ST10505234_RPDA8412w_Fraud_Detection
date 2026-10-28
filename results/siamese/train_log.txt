@@ -1,0 +1,40 @@
+device=cpu  class balance={'genuine': 720, 'forged': 720}  pos_weight=1.00
+Epoch 01/30  train_loss=0.6072  val_loss=1.0624  val_auc=0.7155  val_f1=0.5389
+Epoch 02/30  train_loss=0.4806  val_loss=0.5001  val_auc=0.8513  val_f1=0.7632
+Epoch 03/30  train_loss=0.4415  val_loss=0.5119  val_auc=0.8419  val_f1=0.7576
+Epoch 04/30  train_loss=0.3852  val_loss=0.4639  val_auc=0.9155  val_f1=0.7879
+Epoch 05/30  train_loss=0.3520  val_loss=0.3089  val_auc=0.9040  val_f1=0.8685
+Epoch 06/30  train_loss=0.3396  val_loss=0.3245  val_auc=0.9115  val_f1=0.8652
+Epoch 07/30  train_loss=0.3523  val_loss=0.3008  val_auc=0.9184  val_f1=0.8671
+Epoch 08/30  train_loss=0.3332  val_loss=0.3169  val_auc=0.9215  val_f1=0.8652
+Epoch 09/30  train_loss=0.3452  val_loss=0.3012  val_auc=0.9143  val_f1=0.8716
+Epoch 10/30  train_loss=0.3198  val_loss=0.3011  val_auc=0.9280  val_f1=0.8511
+Epoch 11/30  train_loss=0.3339  val_loss=0.3400  val_auc=0.9211  val_f1=0.8705
+Epoch 12/30  train_loss=0.3269  val_loss=0.2982  val_auc=0.9249  val_f1=0.8682
+Epoch 13/30  train_loss=0.3425  val_loss=0.3005  val_auc=0.9191  val_f1=0.8692
+Epoch 14/30  train_loss=0.3064  val_loss=0.2834  val_auc=0.9305  val_f1=0.8807
+Epoch 15/30  train_loss=0.3005  val_loss=0.2979  val_auc=0.9209  val_f1=0.8670
+Epoch 16/30  train_loss=0.3116  val_loss=0.4680  val_auc=0.9034  val_f1=0.8089
+Epoch 17/30  train_loss=0.3125  val_loss=0.2945  val_auc=0.9228  val_f1=0.8638
+Epoch 18/30  train_loss=0.2789  val_loss=0.2764  val_auc=0.9291  val_f1=0.8787
+Epoch 19/30  train_loss=0.2929  val_loss=0.2985  val_auc=0.9298  val_f1=0.8770
+Epoch 20/30  train_loss=0.2854  val_loss=0.3065  val_auc=0.9180  val_f1=0.8651
+Epoch 21/30  train_loss=0.2866  val_loss=0.3521  val_auc=0.9269  val_f1=0.8626
+Epoch 22/30  train_loss=0.2970  val_loss=0.2946  val_auc=0.9322  val_f1=0.8767
+Epoch 23/30  train_loss=0.2874  val_loss=0.3094  val_auc=0.9172  val_f1=0.8670
+Epoch 24/30  train_loss=0.2656  val_loss=0.3100  val_auc=0.9324  val_f1=0.8620
+Epoch 25/30  train_loss=0.2654  val_loss=0.2737  val_auc=0.9365  val_f1=0.8798
+Epoch 26/30  train_loss=0.2574  val_loss=0.3027  val_auc=0.9291  val_f1=0.8596
+Epoch 27/30  train_loss=0.2675  val_loss=0.4388  val_auc=0.9323  val_f1=0.8293
+Epoch 28/30  train_loss=0.2477  val_loss=0.3904  val_auc=0.9194  val_f1=0.8386
+Epoch 29/30  train_loss=0.2499  val_loss=0.3444  val_auc=0.9297  val_f1=0.8652
+Epoch 30/30  train_loss=0.2352  val_loss=0.2845  val_auc=0.9288  val_f1=0.8839
+
+Best val ROC-AUC: 0.9365
+--- val (best epoch) ---
+   precision: 0.9652
+      recall: 0.8083
+          f1: 0.8798
+     roc_auc: 0.9365
+      pr_auc: 0.9546
+  confusion_matrix (rows=true, cols=pred): [[233, 7], [46, 194]]

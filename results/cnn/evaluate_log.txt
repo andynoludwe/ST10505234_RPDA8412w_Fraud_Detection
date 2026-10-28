@@ -1,0 +1,35 @@
+Loaded checkpoint from epoch 2 (backbone=efficientnet_b0, val_auc=0.5021, val_f1=0.8571)
+
+--- Overall forgery detection (test set) ---
+   precision: 0.7500
+      recall: 1.0000
+          f1: 0.8571
+     roc_auc: 0.5025
+      pr_auc: 0.7479
+  confusion_matrix (rows=true, cols=pred): [[0, 160], [0, 480]]
+
+Per-tamper-type breakdown:
+--- splicing ---
+   precision: 0.0000
+      recall: 0.0000
+          f1: 0.0000
+     roc_auc: 0.4749
+      pr_auc: 0.2378
+  confusion_matrix (rows=true, cols=pred): [[480, 0], [160, 0]]
+--- copy_move ---
+   precision: 0.0000
+      recall: 0.0000
+          f1: 0.0000
+     roc_auc: 0.5335
+      pr_auc: 0.2906
+  confusion_matrix (rows=true, cols=pred): [[480, 0], [160, 0]]
+--- inpainting ---
+   precision: 0.0000
+      recall: 0.0000
+          f1: 0.0000
+     roc_auc: 0.4816
+      pr_auc: 0.2393
+  confusion_matrix (rows=true, cols=pred): [[480, 0], [160, 0]]
+
+Saved metrics JSON to results/cnn/metrics.json
+Saved per-document predictions to results/cnn/predictions.csv (feed this into the fusion layer)

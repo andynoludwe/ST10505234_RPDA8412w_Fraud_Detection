@@ -1,0 +1,19 @@
+--- Overall forgery detection (test set) ---
+   precision: 0.9596   recall: 0.9500   f1: 0.9548   roc_auc: 0.989328125   pr_auc: 0.9920817782282622
+   confusion_matrix (rows=true, cols=pred): [[152, 8], [10, 190]]
+
+Per-anomaly-type breakdown:
+--- tampered_text ---
+   precision: 1.0000   recall: 0.9831   f1: 0.9915   roc_auc: 0.998648572554761   pr_auc: 0.9950990402287114
+   confusion_matrix (rows=true, cols=pred): [[301, 0], [1, 58]]
+--- altered_figures ---
+   precision: 0.9683   recall: 0.9104   f1: 0.9385   roc_auc: 0.9755743466965514   pr_auc: 0.9647437513324004
+   confusion_matrix (rows=true, cols=pred): [[291, 2], [6, 61]]
+--- metadata_anomaly ---
+   precision: 0.8630   recall: 1.0000   f1: 0.9265   roc_auc: 0.9921971033082144   pr_auc: 0.9557302599203796
+   confusion_matrix (rows=true, cols=pred): [[287, 10], [0, 63]]
+--- layout_inconsistency ---
+   precision: 0.9667   recall: 0.9508   f1: 0.9587   roc_auc: 0.9961072427216404   pr_auc: 0.9885894453070494
+   confusion_matrix (rows=true, cols=pred): [[297, 2], [3, 58]]
+
+Wrote metrics to <repo>/results/rf/metrics.json and predictions to <repo>/results/rf/predictions.csv

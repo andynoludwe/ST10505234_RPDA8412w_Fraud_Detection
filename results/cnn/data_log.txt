@@ -1,0 +1,3 @@
+train: 200 source documents -> 800 images (200 genuine, 600 forged)
+val: 40 source documents -> 160 images (40 genuine, 120 forged)
+test: 160 source documents -> 640 images (160 genuine, 480 forged)
