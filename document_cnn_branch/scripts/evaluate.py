@@ -35,7 +35,8 @@ from utils.metrics import compute_forgery_metrics, compute_tamper_type_metrics, 
 
 
 def load_model(checkpoint_path: str, device: torch.device):
-    ckpt = torch.load(checkpoint_path, map_location=device)
+    # our own checkpoint (it stores metrics next to the weights); PyTorch >= 2.6 defaults to weights_only=True and refuses it
+    ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
     model = build_model(ckpt["backbone"], pretrained=False)
     model.load_state_dict(ckpt["model_state_dict"])
     model.to(device)

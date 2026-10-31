@@ -1,11 +1,11 @@
 241 cases (121 fraudulent, 120 genuine); 5-fold x 10 repeats
 
 model                           ROC-AUC           F1@0.5
-fusion_mlp             0.951 +/- 0.025   0.905 +/- 0.034
-logistic_regression    0.967 +/- 0.021   0.929 +/- 0.030
-mean_of_branches       0.968 +/- 0.020   0.902 +/- 0.034
-max_of_branches        0.953 +/- 0.024   0.668 +/- 0.004
-cnn_alone              0.513 +/- 0.071   0.668 +/- 0.004
+fusion_mlp             0.960 +/- 0.024   0.909 +/- 0.038
+logistic_regression    0.969 +/- 0.021   0.926 +/- 0.036
+mean_of_branches       0.968 +/- 0.021   0.739 +/- 0.065
+max_of_branches        0.965 +/- 0.021   0.905 +/- 0.034
+cnn_alone              0.645 +/- 0.082   0.430 +/- 0.106
 rf_alone               0.826 +/- 0.056   0.754 +/- 0.065
 siamese_alone          0.794 +/- 0.058   0.700 +/- 0.078
 

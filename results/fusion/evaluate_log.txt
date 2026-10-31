@@ -1,42 +1,44 @@
 --- Fusion meta-classifier (test set) ---
-   precision: 0.9167   recall: 0.8800   f1: 0.8980   roc_auc: 0.9633333333333333   pr_auc: 0.9757934702978182
-   confusion_matrix (rows=true, cols=pred): [[22, 2], [3, 22]]
+   precision: 0.9200   recall: 0.9200   f1: 0.9200   roc_auc: 0.9616666666666667   pr_auc: 0.9691040077136188
+   confusion_matrix (rows=true, cols=pred): [[22, 2], [2, 23]]
 
-McNemar's test, fusion vs. cnn_forgery_prob: statistic=12.9600, p=0.0003
+McNemar's test, fusion vs. cnn_forgery_prob: statistic=10.3158, p=0.0013
 
-McNemar's test, fusion vs. rf_forgery_prob: statistic=0.9000, p=0.3428
+McNemar's test, fusion vs. rf_forgery_prob: statistic=1.4545, p=0.2278
 
-McNemar's test, fusion vs. siamese_forgery_prob: statistic=3.2727, p=0.0704
+McNemar's test, fusion vs. siamese_forgery_prob: statistic=4.9000, p=0.0269
 
 Computing SHAP values for up to 60 test cases...
 
   0%|          | 0/49 [00:00<?, ?it/s]
-  4%|▍         | 2/49 [00:00<00:02, 19.31it/s]
- 10%|█         | 5/49 [00:00<00:01, 22.92it/s]
- 16%|█▋        | 8/49 [00:00<00:01, 25.83it/s]
- 22%|██▏       | 11/49 [00:00<00:01, 27.33it/s]
- 31%|███       | 15/49 [00:00<00:01, 28.69it/s]
- 39%|███▉      | 19/49 [00:00<00:01, 29.32it/s]
- 47%|████▋     | 23/49 [00:00<00:00, 29.71it/s]
- 55%|█████▌    | 27/49 [00:00<00:00, 29.82it/s]
- 63%|██████▎   | 31/49 [00:01<00:00, 30.06it/s]
- 71%|███████▏  | 35/49 [00:01<00:00, 30.11it/s]
- 80%|███████▉  | 39/49 [00:01<00:00, 29.49it/s]
- 86%|████████▌ | 42/49 [00:01<00:00, 29.55it/s]
- 92%|█████████▏| 45/49 [00:01<00:00, 25.29it/s]
- 98%|█████████▊| 48/49 [00:01<00:00, 25.45it/s]
-100%|██████████| 49/49 [00:01<00:00, 27.60it/s]
+  6%|▌         | 3/49 [00:00<00:01, 23.41it/s]
+ 12%|█▏        | 6/49 [00:00<00:01, 22.95it/s]
+ 18%|█▊        | 9/49 [00:00<00:01, 23.04it/s]
+ 24%|██▍       | 12/49 [00:00<00:01, 22.55it/s]
+ 31%|███       | 15/49 [00:00<00:01, 22.84it/s]
+ 37%|███▋      | 18/49 [00:00<00:01, 22.30it/s]
+ 43%|████▎     | 21/49 [00:00<00:01, 21.86it/s]
+ 49%|████▉     | 24/49 [00:01<00:01, 18.73it/s]
+ 55%|█████▌    | 27/49 [00:01<00:01, 19.63it/s]
+ 61%|██████    | 30/49 [00:01<00:00, 20.56it/s]
+ 67%|██████▋   | 33/49 [00:01<00:00, 21.22it/s]
+ 73%|███████▎  | 36/49 [00:01<00:00, 21.37it/s]
+ 80%|███████▉  | 39/49 [00:01<00:00, 21.94it/s]
+ 86%|████████▌ | 42/49 [00:01<00:00, 20.92it/s]
+ 92%|█████████▏| 45/49 [00:02<00:00, 21.48it/s]
+ 98%|█████████▊| 48/49 [00:02<00:00, 21.54it/s]
+100%|██████████| 49/49 [00:02<00:00, 21.44it/s]
 
 Global feature importance (mean |SHAP value|):
-   rf_forgery_prob: 0.2025
-   siamese_forgery_prob: 0.2002
-   cnn_inpainting_prob: 0.1045
-   rf_altered_figures_prob: 0.0674
-   cnn_splicing_prob: 0.0526
-   cnn_forgery_prob: 0.0437
-   rf_tampered_text_prob: 0.0302
-   cnn_copy_move_prob: 0.0240
-   rf_metadata_anomaly_prob: 0.0147
-   rf_layout_inconsistency_prob: 0.0138
+   rf_forgery_prob: 0.2173
+   siamese_forgery_prob: 0.2129
+   cnn_copy_move_prob: 0.0385
+   rf_tampered_text_prob: 0.0371
+   rf_altered_figures_prob: 0.0367
+   cnn_inpainting_prob: 0.0268
+   cnn_forgery_prob: 0.0230
+   rf_layout_inconsistency_prob: 0.0227
+   rf_metadata_anomaly_prob: 0.0144
+   cnn_splicing_prob: 0.0075
 
 Wrote metrics to <repo>/results/fusion/metrics.json, predictions to <repo>/results/fusion/predictions.csv, SHAP values to <repo>/results/fusion/shap_values.csv

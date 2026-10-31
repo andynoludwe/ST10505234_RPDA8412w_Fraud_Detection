@@ -51,36 +51,38 @@ python scripts/evaluate.py --checkpoint ../outputs/checkpoints/cnn/best_efficien
 
 The predictions CSV has `doc_id, filepath, y_true, forgery_prob, splicing_prob, copy_move_prob, inpainting_prob`.
 
-## Result of the reported run: the CNN did not learn
+## Result of the reported run
 
-EfficientNet-B0 trained from scratch on 800 images (200 documents x 4 variants), validated on 160, tested on
-640 held-out images from 160 documents it never saw. **Test ROC-AUC 0.503; it scores every page as forged**
-(confusion matrix `[[0, 160], [0, 480]]`). Its F1 of 0.857 is not skill: 75% of the test images are forged, so
-"always forged" already gives precision 0.75, recall 1.00, F1 0.857. Read ROC-AUC, not F1, for this branch.
+EfficientNet-B0 with ImageNet weights, trained on a Colab T4 GPU (`--pretrained`, lr 1e-4, 2 warm-up epochs,
+15 epochs), on 800 images (200 documents x 4 variants), validated on 160, tested on 640 held-out images from
+160 documents it never saw. Best validation ROC-AUC 0.765, reached at epoch 15 (the last), so training was
+stopped by the epoch cap, not by early stopping.
 
-What was tried (logs in `results/cnn/`):
+| Test (640 images) | ROC-AUC | Precision | Recall | F1 |
+|---|---|---|---|---|
+| All forgeries | 0.740 | 0.963 | 0.433 | 0.598 |
+| Splicing | 0.648 | no positives predicted | 0 | 0 |
+| Copy-move | 0.655 | 0.526 | 0.063 | 0.11 |
+| Inpainting | 0.959 | 1.000 | 0.656 | 0.793 |
 
-| Attempt | Setting | Best val ROC-AUC |
-|---|---|---|
-| `train_log_lr1e-2_attempt.txt` | lr 1e-2, 15 epochs planned, stopped by hand after epoch 10 | 0.533 |
-| `train_log.txt` (reported) | lr 1e-3, early stopping after epoch 5 | 0.502 |
+Confusion matrix (rows true, columns predicted): `[[152, 8], [272, 208]]`. The model is cautious: few false
+alarms, but it misses more than half of the forged pages at the 0.5 threshold. Inpainting leaves a strong trace;
+splicing and copy-move are close to chance.
 
-Why this is a model/setup limit and not a data defect: a plain gradient-boosting classifier on a few
-native-resolution noise statistics (block-wise variance of the median-filter residual) reaches ROC-AUC 0.69 on
-the same test images (splicing 0.72, copy-move 0.63, inpainting 0.71). That was a one-off check and is not part
-of the pipeline; it only shows the tampering leaves a trace that the 224x224 from-scratch CNN cannot find.
+Earlier attempt, for the record: the same network trained from scratch on 2 CPU cores stayed at chance (test
+ROC-AUC 0.503, it scored every page as forged; logs `results/cnn/train_log_lr1e-2_attempt.txt`). A plain
+gradient-boosting classifier on native-resolution noise statistics reached ROC-AUC 0.69 on the same images, so
+the tampering is detectable and pretrained weights plus a GPU made the difference.
 
-Most likely fixes, in order: ImageNet-pretrained weights (`--pretrained`, needs internet), a GPU so that larger
-inputs (`--image_size 384` or more) are affordable, more training images. None could be run in the environment
-that produced these results (no internet, 2 CPU cores). Until it is re-run, treat the CNN column of every
-downstream result as "uninformative branch".
+Next steps: train longer (`--epochs 40 --patience 8`; validation AUC was still rising), try larger inputs
+(`--image_size 384`), tune the decision threshold on the validation set (recall is the weak point), and generate
+more splicing / copy-move examples. The numbers above are one run with seed 42.
 
 ## Things to know
 
 - **Pretrained weights.** `--pretrained` (default in `train.py`) downloads ImageNet weights. The reported
-  results in `results/cnn/` were produced *without* them (`--no_pretrained`, the download was blocked in the
-  environment that produced them), so they are a floor, not a best case. Re-run with `python run_all.py
-  --steps docs cnn --pretrained` on a machine with internet.
+  results in `results/cnn/` used them, on a Colab T4 GPU (notebook `RPDA8412w_CNN_pretrained_Colab.ipynb`).
+  Without internet use `--no_pretrained`; expect chance-level results on CPU.
 - **Backbones.** The proposal compares ResNet-50 and EfficientNet-B0. Only EfficientNet-B0 was trained for the
   reported run (ResNet-50 is about 2x slower on a CPU). Use `--backbone resnet50` to run the other.
 - **Image size.** Pages are 660 x 900 pixels and are resized to 224x224, which discards fine forensic traces; larger
