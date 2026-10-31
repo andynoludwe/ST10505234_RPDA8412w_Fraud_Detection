@@ -1,2 +1,0 @@
-Validation — precision: 0.8846  recall: 0.9583  f1: 0.9200
-Saved checkpoint to <repo>/outputs/checkpoints/fusion/fusion_meta_classifier.joblib (val_f1=0.9200)
